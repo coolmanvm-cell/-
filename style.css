@@ -1,0 +1,403 @@
+* {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: 'Tajawal', Arial, sans-serif;
+    background: #faf8fc;
+    color: #1a1a1a;
+}
+
+header {
+    height: 70px;
+    padding: 0 5%;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+header .logo {
+    font-size: 20px;
+    font-weight: 800;
+    color: #111;
+}
+
+header .logo span {
+    color: #b38b4d;
+}
+
+.cart-btn {
+    border: none;
+    background: #111;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+#cartCount {
+    background: #b38b4d;
+    padding: 2px 6px;
+    border-radius: 50%;
+}
+
+/* قسم الـ Hero الرئيسي */
+.hero {
+    text-align: center;
+    padding: 50px 20px;
+    background: linear-gradient(180deg, #ffffff 0%, #faf8fc 100%);
+}
+
+.hero .badge {
+    background: #f0e6d2;
+    color: #b38b4d;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.hero h2 {
+    font-size: 26px;
+    margin: 15px 0 10px;
+}
+
+.hero p {
+    color: #666;
+    font-size: 14px;
+    max-width: 500px;
+    margin: 0 auto 20px;
+}
+
+.btn-primary {
+    display: inline-block;
+    background: #111;
+    color: white;
+    padding: 10px 24px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* شريط المميزات */
+.features {
+    display: flex;
+    justify-content: space-around;
+    gap: 15px;
+    padding: 20px;
+    background: white;
+    margin: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    flex-wrap: wrap;
+}
+
+.feature-item {
+    text-align: center;
+    flex: 1;
+    min-width: 120px;
+}
+
+.feature-item span {
+    font-size: 24px;
+}
+
+.feature-item h4 {
+    margin: 5px 0 2px;
+    font-size: 14px;
+}
+
+.feature-item p {
+    margin: 0;
+    font-size: 11px;
+    color: #777;
+}
+
+main {
+    padding: 20px 15px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.section-title h2 {
+    font-size: 22px;
+    margin-bottom: 5px;
+}
+
+.section-title p {
+    color: #777;
+    font-size: 13px;
+    margin: 0;
+}
+
+.categories {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.category-btn {
+    border: 1px solid #ddd;
+    background: white;
+    color: #333;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.category-btn.active {
+    background: #111;
+    color: white;
+    border-color: #111;
+}
+
+/* حل مشكلة الصور المقصوصة والضخمة */
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 15px;
+}
+
+.product {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #eee;
+    cursor: pointer;
+}
+
+.product-img-wrapper {
+    width: 100%;
+    height: 180px;
+    background: #f9f9f9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.product-img-wrapper img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* إظهار كامل القطعة بدون قص */
+}
+
+.product-info {
+    padding: 12px;
+    text-align: center;
+}
+
+.product-info h3 {
+    font-size: 14px;
+    margin: 0 0 6px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.price {
+    font-size: 15px;
+    font-weight: bold;
+    color: #111;
+}
+
+.add {
+    width: 100%;
+    margin-top: 10px;
+    padding: 8px;
+    border: none;
+    border-radius: 8px;
+    background: #111;
+    color: white;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+/* أزرار تعدد الصفحات (Pagination) */
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 30px;
+}
+
+.page-btn {
+    padding: 8px 14px;
+    border: 1px solid #ddd;
+    background: #fff;
+    color: #333;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.page-btn.active {
+    background: #111;
+    color: #fff;
+    border-color: #111;
+}
+
+/* آراء العملاء */
+.testimonials {
+    padding: 40px 20px;
+    background: #fff;
+    margin-top: 40px;
+}
+
+.testimonials-grid {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 900px;
+    margin: auto;
+}
+
+.testimonial-card {
+    background: #faf8fc;
+    padding: 20px;
+    border-radius: 12px;
+    flex: 1;
+    min-width: 250px;
+    text-align: center;
+}
+
+.stars {
+    color: #b38b4d;
+    margin-bottom: 8px;
+}
+
+/* زر الواتساب العائم */
+.whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background: #25d366;
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    z-index: 99;
+}
+
+/* النوافذ المنبثقة والسلة */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 999;
+    align-items: center;
+    justify-content: center;
+}
+
+.cart {
+    background: white;
+    width: 90%;
+    max-width: 400px;
+    padding: 20px;
+    border-radius: 16px;
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    border: none;
+    background: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* نافذة تفاصيل القطعة */
+.product-detail-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.product-detail-img {
+    width: 100%;
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f8f8f8;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.product-detail-img img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.product-detail-info {
+    text-align: center;
+    width: 100%;
+}
+
+.detail-price {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 8px 0;
+}
+
+.detail-desc {
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.add-large-btn {
+    width: 100%;
+    padding: 12px;
+    background: #111;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.checkout {
+    width: 100%;
+    padding: 12px;
+    background: #25d366;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 15px;
+    margin-top: 15px;
+    cursor: pointer;
+}
