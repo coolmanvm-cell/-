@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>كول مان | متجر الملابس العصرية</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init("UI--0ax70uJgoqsr1");
+        })();
+    </script>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <h1 class="logo">LUXURY STORE</h1>
+            <button class="cart-btn" onclick="openCart()">
+                🛒 السلة <span id="cartCount">0</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- أقسام المنتجات -->
+        <div class="categories">
+            <button class="category-btn active" onclick="filterProducts('all')">الكل</button>
+            <button class="category-btn" onclick="filterProducts('shirts')">قمصان وتيشيرتات</button>
+            <button class="category-btn" onclick="filterProducts('pants')">بنطال</button>
+            <button class="category-btn" onclick="filterProducts('jackets')">جاكيتات</button>
+        </div>
+
+        <!-- شبكة عرض المنتجات -->
+        <section id="products-section">
+            <div id="products" class="products-grid"></div>
+            <div id="pagination" class="pagination"></div>
+        </section>
+
+        <!-- زر عرض آراء العملاء -->
+        <div style="text-align: center; margin: 40px 0;">
+            <button class="review-view-btn" onclick="openReviewsModal()">⭐ عرض آراء العملاء ⭐</button>
+        </div>
+    </main>
+
+    <!-- نافذة تفاصيل المنتج -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeProductModal()">&times;</span>
+            <div id="productModalDetails"></div>
+        </div>
+    </div>
+
+    <!-- نافذة السلة والدفع -->
+    <div id="cartModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeCart()">&times;</span>
+            <h2>🛒 حقيبة المشتريات</h2>
+            <div id="cartItems"></div>
+            
+            <div class="cart-summary" style="margin-top: 15px; border-top: 1px solid #eee; padding-top: 10px;">
+                <h3 style="font-size: 18px;">الإجمالي: <span id="cartTotal">0</span> ر.س</h3>
+                <p style="font-size: 12px; color: #666;">شامل الضريبة والشحن المباشر</p>
+            </div>
+
+            <!-- نموذج إدخال بيانات الطلب -->
+            <form id="checkoutForm" onsubmit="handleDirectCheckout(event)">
+                <input type="text" id="custName" placeholder="الاسم الكامل" required>
+                <input type="tel" id="custPhone" placeholder="رقم الجوال (مثال: 05xxxxxxxx)" required>
+                <input type="text" id="custCity" placeholder="المدينة" required>
+                <input type="text" id="custAddress" placeholder="العنوان (الحي / الشارع)" required>
+                
+                <div class="payment-method-badge">
+                    💳 <b>طريقة الدفع:</b> نقداً أو بالشبكة عند الاستلام
+                </div>
+                
+                <button type="submit" id="checkoutBtn" class="submit-btn">تأكيد وإتمام الطلب الآن 🚚</button>
+            </form>
+
+            <div id="orderSuccessMessage" style="display:none; text-align:center; padding: 20px;">
+                <h3 style="color: #28a745;">✅ تم إرسال طلبك بنجاح!</h3>
+                <p>رقم الطلب الخاص بك: <b id="displayOrderId"></b></p>
+                <p>سنتواصل معك قريباً لتأكيد التوصيل.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- نافذة التقييم -->
+    <div id="reviewModal" class="modal">
+        <div class="modal-content" style="max-width: 400px; text-align: center;">
+            <h3>شاركنا رأيك! ⭐</h3>
+            <p style="font-size: 13px; color: #666; margin-bottom: 10px;">كيف كانت تجربتك في الطلب؟</p>
+            <input type="text" id="reviewerName" placeholder="اسمك (اختياري)">
+            <select id="reviewerRating" style="margin: 10px 0;">
+                <option value="5">⭐⭐⭐⭐⭐ (ممتاز)</option>
+                <option value="4">⭐⭐⭐⭐ (جيد جداً)</option>
+                <option value="3">⭐⭐⭐ (جيد)</option>
+            </select>
+            <textarea id="reviewerComment" placeholder="اكتب تعليقك هنا..." rows="3"></textarea>
+            <button onclick="submitReview()" class="submit-btn">إرسال التقييم</button>
+            <button onclick="skipReview()" style="background:none; border:none; color:#888; margin-top:10px; cursor:pointer;">تخطي</button>
+        </div>
+    </div>
+
+    <!-- نافذة عرض التقييمات -->
+    <div id="reviewsViewModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeReviewsModal()">&times;</span>
+            <h2>⭐ تقييمات وآراء العملاء</h2>
+            <div id="testimonialsGrid" style="margin-top: 15px;"></div>
+        </div>
+    </div>
+
+    <script src="products.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
